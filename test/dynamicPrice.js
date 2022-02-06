@@ -57,7 +57,66 @@ describe('Dynamic Price NFT', () => {
     console.log("balanceAfter",balanceAfter);
     
   })
-  
+
+  it('Mint 100 Tokens By Paying 2x the amount ', async function() {
+
+    expect((await dynamicPriceContract.maxSupply()).toNumber()).to.eql(1000);
+    
+    const balanceBefore = await ethers.provider.getBalance(owner.address);
+    console.log("balanceBefore", balanceBefore);
+    await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("2")});
+    const balanceAfter = await ethers.provider.getBalance(owner.address);
+    console.log("balanceAfter",balanceAfter);
+    
+  })
+
+  it('Mint 100 Tokens By Paying 3x the amount ', async function() {
+
+    expect((await dynamicPriceContract.maxSupply()).toNumber()).to.eql(1000);
+    
+    const balanceBefore = await ethers.provider.getBalance(owner.address);
+    console.log("balanceBefore", balanceBefore);
+    await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("3")});
+    const balanceAfter = await ethers.provider.getBalance(owner.address);
+    console.log("balanceAfter",balanceAfter);
+    
+  })
+
+  it('Mint 100 Tokens By Paying 4x the amount ', async function() {
+
+    expect((await dynamicPriceContract.maxSupply()).toNumber()).to.eql(1000);
+    
+    const balanceBefore = await ethers.provider.getBalance(owner.address);
+    console.log("balanceBefore", balanceBefore);
+    await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("4")});
+    const balanceAfter = await ethers.provider.getBalance(owner.address);
+    console.log("balanceAfter",balanceAfter);
+    
+  })
+
+  it('Mint 100 Tokens By Paying 5x the amount ', async function() {
+
+    expect((await dynamicPriceContract.maxSupply()).toNumber()).to.eql(1000);
+    
+    const balanceBefore = await ethers.provider.getBalance(owner.address);
+    console.log("balanceBefore", balanceBefore);
+    await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("5")});
+    const balanceAfter = await ethers.provider.getBalance(owner.address);
+    console.log("balanceAfter",balanceAfter);
+    
+  })
+
+  it('Mint Another 100 Tokens By Paying 5x the amount ', async function() {
+
+    expect((await dynamicPriceContract.maxSupply()).toNumber()).to.eql(1000);
+    
+    const balanceBefore = await ethers.provider.getBalance(owner.address);
+    console.log("balanceBefore", balanceBefore);
+    await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("5")});
+    const balanceAfter = await ethers.provider.getBalance(owner.address);
+    console.log("balanceAfter",balanceAfter);
+    
+  })
 
   
 })
