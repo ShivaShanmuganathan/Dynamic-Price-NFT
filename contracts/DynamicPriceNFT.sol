@@ -1,5 +1,6 @@
 
 // SPDX-License-Identifier: MIT
+import "hardhat/console.sol";
 
 // File: @openzeppelin/contracts/utils/introspection/IERC165.sol
 pragma solidity ^0.8.0;
@@ -1225,9 +1226,9 @@ contract DynamicPriceNFT is ERC721Enumerable, Ownable {
 
   string baseURI;
   string public baseExtension = ".json";
-  uint256 public cost = 0.08 ether;
-  uint256 public maxSupply = 10000;
-  uint256 public maxMintAmount = 5;
+  uint256 public cost = 0.01 ether;
+  uint256 public maxSupply = 1000;
+  uint256 public maxMintAmount = 200;
   bool public paused = true;
   bool public revealed = false;
   string public notRevealedUri;
@@ -1248,29 +1249,26 @@ contract DynamicPriceNFT is ERC721Enumerable, Ownable {
   }
 
   function estimateCost(uint256 _supply) public view returns(uint256 _cost){
+      console.log(_supply);
       
-      if(_supply >= (maxSupply * 50/100)) {
+      if(_supply < maxSupply - (maxSupply*5/10)) {
+          return cost;
+      }
+
+      else if(_supply < maxSupply - (maxSupply*4/10)) {
           return cost*2;
       }
 
-      else if(_supply >= (maxSupply * 40/100)) {
+      else if(_supply < maxSupply - (maxSupply*3/10)) {
           return cost*3;
       }
 
-      else if(_supply >= (maxSupply * 30/100)) {
+      else if(_supply <  maxSupply -(maxSupply*2/10)) {
           return cost*4;
       }
 
-      else if(_supply >= (maxSupply * 20/100)) {
-          return cost*4;
-      }
-
-      else if(_supply >= (maxSupply * 10/100)) {
-          return cost*5;
-      }
-      
       else {
-          return cost*10;
+          return cost*5;
       }
 
     //   if(_supply <= (maxSupply * 10/100)) {
