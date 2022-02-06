@@ -24,10 +24,11 @@ describe('Dynamic Price NFT', () => {
     expect((await dynamicPriceContract.maxSupply()).toNumber()).to.eql(1000);
     
     const balanceBefore = await ethers.provider.getBalance(owner.address);
-    console.log("balanceBefore", balanceBefore);
+    console.log("balanceBefore", parseFloat(ethers.utils.formatEther(balanceBefore)));
     await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("1")});
     const balanceAfter = await ethers.provider.getBalance(owner.address);
-    console.log("balanceAfter",balanceAfter);
+    console.log("balanceAfter", parseFloat(ethers.utils.formatEther(balanceAfter)));
+    expect(balanceBefore > balanceAfter);
     
   })
 
@@ -36,13 +37,14 @@ describe('Dynamic Price NFT', () => {
     expect((await dynamicPriceContract.maxSupply()).toNumber()).to.eql(1000);
     
     const balanceBefore = await ethers.provider.getBalance(owner.address);
-    console.log("balanceBefore", balanceBefore);
+    console.log("balanceBefore", parseFloat(ethers.utils.formatEther(balanceBefore)));
     await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("1")});
     await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("1")});
     await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("1")});
     await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("1")});
     const balanceAfter = await ethers.provider.getBalance(owner.address);
-    console.log("balanceAfter",balanceAfter);
+    console.log("balanceAfter", parseFloat(ethers.utils.formatEther(balanceAfter)));
+    expect(balanceBefore > balanceAfter);
     
   })
 
@@ -51,10 +53,11 @@ describe('Dynamic Price NFT', () => {
     expect((await dynamicPriceContract.maxSupply()).toNumber()).to.eql(1000);
     
     const balanceBefore = await ethers.provider.getBalance(owner.address);
-    console.log("balanceBefore", balanceBefore);
+    console.log("balanceBefore", parseFloat(ethers.utils.formatEther(balanceBefore)));
     await expect(dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("1")})).to.be.revertedWith('Not Enough Funds');
     const balanceAfter = await ethers.provider.getBalance(owner.address);
-    console.log("balanceAfter",balanceAfter);
+    console.log("balanceAfter", parseFloat(ethers.utils.formatEther(balanceAfter)));
+    expect(balanceBefore == balanceAfter);
     
   })
 
@@ -63,10 +66,11 @@ describe('Dynamic Price NFT', () => {
     expect((await dynamicPriceContract.maxSupply()).toNumber()).to.eql(1000);
     
     const balanceBefore = await ethers.provider.getBalance(owner.address);
-    console.log("balanceBefore", balanceBefore);
+    console.log("balanceBefore", parseFloat(ethers.utils.formatEther(balanceBefore)));
     await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("2")});
     const balanceAfter = await ethers.provider.getBalance(owner.address);
-    console.log("balanceAfter",balanceAfter);
+    console.log("balanceAfter", parseFloat(ethers.utils.formatEther(balanceAfter)));
+    expect(balanceBefore > balanceAfter);
     
   })
 
@@ -75,11 +79,11 @@ describe('Dynamic Price NFT', () => {
     expect((await dynamicPriceContract.maxSupply()).toNumber()).to.eql(1000);
     
     const balanceBefore = await ethers.provider.getBalance(owner.address);
-    console.log("balanceBefore", balanceBefore);
+    console.log("balanceBefore", parseFloat(ethers.utils.formatEther(balanceBefore)));
     await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("3")});
     const balanceAfter = await ethers.provider.getBalance(owner.address);
-    console.log("balanceAfter",balanceAfter);
-    
+    console.log("balanceAfter", parseFloat(ethers.utils.formatEther(balanceAfter)));
+    expect(balanceBefore > balanceAfter);
   })
 
   it('Mint 100 Tokens By Paying 4x the amount ', async function() {
@@ -87,10 +91,11 @@ describe('Dynamic Price NFT', () => {
     expect((await dynamicPriceContract.maxSupply()).toNumber()).to.eql(1000);
     
     const balanceBefore = await ethers.provider.getBalance(owner.address);
-    console.log("balanceBefore", balanceBefore);
+    console.log("balanceBefore", parseFloat(ethers.utils.formatEther(balanceBefore)));
     await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("4")});
     const balanceAfter = await ethers.provider.getBalance(owner.address);
-    console.log("balanceAfter",balanceAfter);
+    console.log("balanceAfter", parseFloat(ethers.utils.formatEther(balanceAfter)));
+    expect(balanceBefore > balanceAfter);
     
   })
 
@@ -99,10 +104,11 @@ describe('Dynamic Price NFT', () => {
     expect((await dynamicPriceContract.maxSupply()).toNumber()).to.eql(1000);
     
     const balanceBefore = await ethers.provider.getBalance(owner.address);
-    console.log("balanceBefore", balanceBefore);
+    console.log("balanceBefore", parseFloat(ethers.utils.formatEther(balanceBefore)));
     await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("5")});
     const balanceAfter = await ethers.provider.getBalance(owner.address);
-    console.log("balanceAfter",balanceAfter);
+    console.log("balanceAfter", parseFloat(ethers.utils.formatEther(balanceAfter)));
+    expect(balanceBefore > balanceAfter);
     
   })
 
@@ -111,11 +117,11 @@ describe('Dynamic Price NFT', () => {
     expect((await dynamicPriceContract.maxSupply()).toNumber()).to.eql(1000);
     
     const balanceBefore = await ethers.provider.getBalance(owner.address);
-    console.log("balanceBefore", balanceBefore);
+    console.log("balanceBefore", parseFloat(ethers.utils.formatEther(balanceBefore)));
     await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("5")});
     const balanceAfter = await ethers.provider.getBalance(owner.address);
-    console.log("balanceAfter",balanceAfter);
-    
+    console.log("balanceAfter", parseFloat(ethers.utils.formatEther(balanceAfter)));
+    expect(balanceBefore > balanceAfter);
   })
 
   
