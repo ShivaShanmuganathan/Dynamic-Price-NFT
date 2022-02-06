@@ -45,7 +45,18 @@ describe('Dynamic Price NFT', () => {
     console.log("balanceAfter",balanceAfter);
     
   })
-  
+
+  it('Fail To Mint 100 Tokens Due To Lack Of Funds ', async function() {
+
+    expect((await dynamicPriceContract.maxSupply()).toNumber()).to.eql(1000);
+    
+    const balanceBefore = await ethers.provider.getBalance(owner.address);
+    console.log("balanceBefore", balanceBefore);
+    await expect(dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("1")})).to.be.revertedWith('Not Enough Funds');
+    const balanceAfter = await ethers.provider.getBalance(owner.address);
+    console.log("balanceAfter",balanceAfter);
+    
+  })
   
 
   
