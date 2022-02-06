@@ -31,6 +31,21 @@ describe('Dynamic Price NFT', () => {
     
   })
 
+  it('Mint Next 400', async function() {
+
+    expect((await dynamicPriceContract.maxSupply()).toNumber()).to.eql(1000);
+    
+    const balanceBefore = await ethers.provider.getBalance(owner.address);
+    console.log("balanceBefore", balanceBefore);
+    await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("1")});
+    await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("1")});
+    await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("1")});
+    await dynamicPriceContract.mint(100, {value: ethers.utils.parseEther("1")});
+    const balanceAfter = await ethers.provider.getBalance(owner.address);
+    console.log("balanceAfter",balanceAfter);
+    
+  })
+  
   
 
   
